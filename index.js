@@ -50,14 +50,22 @@ const todoList = () => {
             else if(list[i].completed == false){
                 check = '[ ]';
             }
-            if(list[i].dueDate != today){
+            if(i != list.length - 1){
+                if(list[i].dueDate != today){
+                    OUTPUT_STRING += check+' '+list[i].title+' '+list[i].dueDate+'\n';
+                }
+                else if(list[i].dueDate == today){
+                    OUTPUT_STRING += check+' '+list[i].title+'\n';
+                }
+            }
+            else{
+                if(list[i].dueDate != today){
                 OUTPUT_STRING += check+' '+list[i].title+' '+list[i].dueDate;
+                }
+                else if(list[i].dueDate == today){
+                    OUTPUT_STRING += check+' '+list[i].title;
+                }
             }
-            else if(list[i].dueDate == today){
-                OUTPUT_STRING += check+' '+list[i].title+' ';
-            }
-            OUTPUT_STRING = OUTPUT_STRING+'\n';
-    
         }
         return OUTPUT_STRING;
       
